@@ -1,13 +1,13 @@
 import scala.collection.mutable.ListBuffer
 import org.apache.spark.sql.{SparkSession, DataFrame,SaveMode}
 import java.text.SimpleDateFormat
-import java.util.{Date, TimeZone}
+import java.util.{TimeZone}
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.types._
 import org.apache.commons.io.FileUtils
 import java.io.File
 
-object mission {
+object TestApp {
 
   def get_period(start_year: Int, end_year: Int, start_month: Int, end_month: Int): collection.mutable.Map[Any, List[Int]] = {
     val return_value = collection.mutable.Map[Any,List[Int]]()  // 변경 가능한 Map으로 선언
@@ -141,12 +141,12 @@ object mission {
       // E type 변경 E //
 
       // S snappy 및 parquet 포맷으로 저장 (파티셔닝 포함) S //
-//      combined_df.write
-//        .partitionBy("year", "month", "day") // 년, 월, 일로 파티셔닝
-//        .mode(SaveMode.Overwrite) // 저장 모드 설정 (덮어쓰기)
-//        .format("parquet") // 저장 포맷 (parquet)
-//        .option("compression", "snappy") // 압축 (snappy)
-//        .save(save_path)
+      combined_df.write
+        .partitionBy("year", "month", "day") // 년, 월, 일로 파티셔닝
+        .mode(SaveMode.Overwrite) // 저장 모드 설정 (덮어쓰기)
+        .format("parquet") // 저장 포맷 (parquet)
+        .option("compression", "snappy") // 압축 (snappy)
+        .save(save_path)
       // E snappy 및 parquet 포맷으로 저장 (파티셔닝 포함) E //
       println("--- END ---")
 
