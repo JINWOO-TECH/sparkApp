@@ -74,7 +74,7 @@ object TestApp {
     val start_year = 2019
     val end_year = 2019
     val start_month = 10
-    val end_month = 10
+    val end_month = 11
     // E 다른 기간 요구 시 작성 E //
 
     // csv 파일 데이터 저장 위치
